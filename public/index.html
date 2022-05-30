@@ -7,27 +7,45 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Test</h1>
+    <h1 id="container">Test</h1>
     <script src="/dist/bundle.js"></script>
 
     <script>
       // let templateStr = `<h1>我的名字是{{name}},我今年{{age}}岁</h1>`;
+
+      // let data = {
+      //   name: '张三',
+      //   age: 18
+      // };
       let templateStr = `<ul>
         {{#arr}}
         <li>
-          <p>{{name}}</p>
-          <p>{{age}}</p>
-          {{#hobby}}
-            <ol>{{.}}</ol>
-          {{/bobby}}
-        </li>
-        {{/arr}}
-      </ul>`;
+          <p>我的名字是{{name}}</p>
+          <p>我今年{{age}}岁</p>
+          <p>我的爱好是</p>
+            {{#hobby}}
+              <ol>{{.}}</ol>
+            {{/bobby}}
+          </li>
+          {{/arr}}
+          </ul>`;
       let data = {
-        name: '张三',
-        age: 18
+        arr: [
+          {
+            name: '张三',
+            age: 18,
+            hobby: ['篮球', '足球']
+          },
+          {
+            name: '李四',
+            age: 20,
+            hobby: ['足球', '篮球']
+          }
+        ]
       };
-      Bepo_TemplateEngine.render(templateStr, data);
+
+      let str = Bepo_TemplateEngine.render(templateStr, data);
+      document.getElementById('container').innerHTML = str;
     </script>
   </body>
 </html>

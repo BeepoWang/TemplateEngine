@@ -3,7 +3,6 @@
  * @param {[]} tokens
  */
 export default function nestTokens(tokens) {
-  console.log('nestTokens--tokens', tokens);
   // 结果数组
   var nestTokens = [];
   // 收集器，天生指向nesTokens结果数组，引用类型值，所以指向同一个数组
@@ -14,7 +13,6 @@ export default function nestTokens(tokens) {
 
   for (let i = 0; i < tokens.length; i++) {
     let token = tokens[i];
-    console.log(token);
     switch (token[0]) {
       case '#':
         // 收集器中放入token
